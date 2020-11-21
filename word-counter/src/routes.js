@@ -1,4 +1,3 @@
-import HelloWorld from './components/HelloWorld.vue'
 import WordCounter from './pages/WordCounter.vue'
 
 export default [
