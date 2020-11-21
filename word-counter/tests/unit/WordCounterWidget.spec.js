@@ -3,7 +3,6 @@ import Vuetify from 'vuetify'
 import WordCounterWidget from '@/components/WordCounterWidget.vue'
 import axios from 'axios'
 import Vue from 'vue'
-// import vuetify from '../../src/plugins/vuetify'
 
 describe('WordCounterWidget.vue', () => {
   let localVue
