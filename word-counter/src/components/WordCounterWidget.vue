@@ -21,7 +21,7 @@
           </v-row>
           <transition name="slide-fade">
             <v-row v-if="countAvailable" class="justify-center py-5">
-              <v-chip>WORD COUNT: {{ wordCount }}</v-chip>
+              <v-chip color="green" text-color="white" large>WORD COUNT: {{ wordCount }}</v-chip>
             </v-row>
           </transition>
           <v-row justify="center">

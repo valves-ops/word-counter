@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container class="background-color" fluid fill-height>
     <WordCounterWidget></WordCounterWidget>
   </v-container>
 </template>
@@ -13,4 +13,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.background-color {
+  background-color: lightblue;
+}
+</style>
+>
