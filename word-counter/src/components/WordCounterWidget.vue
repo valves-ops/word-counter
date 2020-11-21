@@ -13,13 +13,15 @@
               outlined
               no-resize
               label="Type your text here"
-              class="pa-10"
+              class="px-10 pt-5"
             >
             </v-textarea>
           </v-row>
-          <v-row v-if="countAvailable" class="justify-center">
-            <v-chip>WORD COUNT: {{ wordCount }}</v-chip>
-          </v-row>
+          <transition name="slide-fade">
+            <v-row v-if="countAvailable" class="justify-center py-5">
+              <v-chip>WORD COUNT: {{ wordCount }}</v-chip>
+            </v-row>
+          </transition>
           <v-row justify="center">
             <v-btn @click.prevent="count" class="justify-center ma-3">Count!</v-btn>
             <v-btn v-if="textContent" @click.prevent="textContent = ''" class="ma-3">Clear</v-btn>
@@ -55,4 +57,16 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.slide-fade-enter-active {
+  transition: all 0.1s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(5px);
+  opacity: 0;
+}
+</style>
