@@ -8,11 +8,13 @@ describe('WordCounterWidget.vue', () => {
   let localVue
   let wrapper
   let vuetify
+
   beforeEach(() => {
     localVue = createLocalVue()
     vuetify = new Vuetify()
     wrapper = mount(WordCounterWidget, localVue, vuetify)
   })
+
   it('initializes with wordCount set to 0', () => {
     expect(wrapper.vm.$data.wordCount).toBe(0)
   })
