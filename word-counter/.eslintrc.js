@@ -1,11 +1,13 @@
 module.exports = {
-    "extends": [
-        "plugin:prettier/recommended"
-    ],
+  extends: ['plugin:prettier/recommended'],
 
-    "plugins": ["prettier"],
-
-    "rules": {
-        "prettier/prettier": "error"
-    }
+  plugins: ['prettier'],
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+  },
+  rules: {
+    'prettier/prettier': 'error',
+  },
 }
