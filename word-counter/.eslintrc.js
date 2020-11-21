@@ -2,10 +2,11 @@ module.exports = {
   extends: ['plugin:prettier/recommended'],
 
   plugins: ['prettier'],
-  parser: 'babel-eslint',
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 6,
+    parser: 'babel-eslint',
     sourceType: 'module',
+    ecmaVersion: 2018,
   },
   rules: {
     'prettier/prettier': 'error',
