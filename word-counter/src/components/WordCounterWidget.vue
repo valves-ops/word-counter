@@ -23,8 +23,16 @@
             </v-row>
           </transition>
           <v-row justify="center">
-            <v-btn @click.prevent="count" class="justify-center ma-3">Count!</v-btn>
-            <v-btn v-if="textContent" @click.prevent="textContent = ''" class="ma-3">Clear</v-btn>
+            <v-btn color="blue" @click.prevent="count" class="justify-center ma-3 white--text"
+              >Count!</v-btn
+            >
+            <v-btn
+              color="orange"
+              v-if="textContent"
+              @click.prevent="textContent = ''"
+              class="ma-3 white--text"
+              >Clear</v-btn
+            >
           </v-row>
         </v-form>
       </v-card-text>
