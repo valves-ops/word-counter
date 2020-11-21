@@ -6,13 +6,14 @@
         Type a text in the form below to count how many words it contains!
       </v-card-subtitle>
       <v-card-text>
-        <v-form>
+        <v-form ref="form" v-model="isFormValid">
           <v-row justify="center">
             <v-textarea
               id="text-input-field"
               v-model="textContent"
               outlined
               no-resize
+              :rules="rules.required"
               label="Type your text here"
               class="px-10 pt-5"
             >
@@ -31,11 +32,7 @@
               class="justify-center ma-3 white--text"
               >Count!</v-btn
             >
-            <v-btn
-              color="orange"
-              v-if="textContent"
-              @click.prevent="textContent = ''"
-              class="ma-3 white--text"
+            <v-btn color="orange" v-if="textContent" @click.prevent="clear" class="ma-3 white--text"
               >Clear</v-btn
             >
           </v-row>
@@ -50,15 +47,26 @@ import wordCounter from '../utils/wordCounter'
 export default {
   data: function () {
     return {
+      isFormValid: false,
       countAvailable: false,
       textContent: '',
       wordCount: 0,
+      rules: {
+        required: [(value) => !!value || 'Type some text.'],
+      },
     }
   },
   methods: {
     count: function () {
-      this.countAvailable = true
-      this.wordCount = wordCounter(this.textContent)
+      this.$refs.form.validate()
+      if (this.isFormValid) {
+        this.countAvailable = true
+        this.wordCount = wordCounter(this.textContent)
+      }
+    },
+    clear: function () {
+      this.textContent = ''
+      this.$refs.form.resetValidation()
     },
   },
   watch: {
