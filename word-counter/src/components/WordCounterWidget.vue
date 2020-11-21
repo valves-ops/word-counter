@@ -9,6 +9,7 @@
         <v-form>
           <v-row justify="center">
             <v-textarea
+              id="text-input-field"
               v-model="textContent"
               outlined
               no-resize
@@ -23,7 +24,11 @@
             </v-row>
           </transition>
           <v-row justify="center">
-            <v-btn color="blue" @click.prevent="count" class="justify-center ma-3 white--text"
+            <v-btn
+              id="count-button"
+              color="blue"
+              @click.prevent="count"
+              class="justify-center ma-3 white--text"
               >Count!</v-btn
             >
             <v-btn
@@ -47,7 +52,7 @@ export default {
     return {
       countAvailable: false,
       textContent: '',
-      wordCount: null,
+      wordCount: 0,
     }
   },
   methods: {
@@ -59,7 +64,7 @@ export default {
   watch: {
     textContent: function (val) {
       this.countAvailable = false
-      this.wordCount = null
+      this.wordCount = 0
     },
   },
 }
