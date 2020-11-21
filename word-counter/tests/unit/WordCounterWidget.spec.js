@@ -2,6 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import Vuetify from 'vuetify'
 import WordCounterWidget from '@/components/WordCounterWidget.vue'
 import axios from 'axios'
+import Vue from 'vue'
 // import vuetify from '../../src/plugins/vuetify'
 
 describe('WordCounterWidget.vue', () => {
@@ -19,12 +20,14 @@ describe('WordCounterWidget.vue', () => {
     expect(wrapper.vm.$data.wordCount).toBe(0)
   })
 
-  it('counts word', async () => {
+  it('counts words', async () => {
     const textInput = wrapper.find('#text-input-field')
     textInput.element.value = 'I like programming!'
     textInput.trigger('input')
+    await Vue.nextTick()
     wrapper.find('#count-button').trigger('click')
-    expect(wrapper.vm.wordCount).toBe(3)
+
+    expect(wrapper.vm.$data.wordCount).toBe(3)
   })
 
   it('counts lorem ipsum', async () => {
@@ -35,7 +38,14 @@ describe('WordCounterWidget.vue', () => {
     const textInput = wrapper.find('#text-input-field')
     textInput.element.value = text
     textInput.trigger('input')
+    await Vue.nextTick()
+
     wrapper.find('#count-button').trigger('click')
     expect(wrapper.vm.wordCount).toBe(wordCount)
+  })
+
+  it('shall tell some text input is required', () => {
+    wrapper.find('#count-button').trigger('click')
+    expect(wrapper.find('.v-messages__message').text()).toBe('Type some text.')
   })
 })
