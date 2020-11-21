@@ -44,8 +44,9 @@ describe('WordCounterWidget.vue', () => {
     expect(wrapper.vm.wordCount).toBe(wordCount)
   })
 
-  it('shall tell some text input is required', () => {
+  it('shall tell some text input is required', async () => {
     wrapper.find('#count-button').trigger('click')
-    expect(wrapper.find('.v-messages__message').text()).toBe('Type some text.')
+    await Vue.nextTick()
+    expect(wrapper.find('div.v-messages').text()).toBe('Type some text.')
   })
 })
