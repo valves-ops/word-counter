@@ -1,6 +1,20 @@
 # word-counter
 
-## Project setup
+## Docker Project setup
+
+Build Image
+
+```
+docker build -t wordcounter .
+```
+
+Run Container
+
+```
+docker run -d --rm --name wordcounter -p 80:80 wordcounter
+```
+
+## Local Project setup
 
 ```
 npm install
